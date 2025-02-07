@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Produit {
+  id: ID!
+  name: String!
+  description: String!
+  prix: Float!
+}
+
+type Fournisseur {
+  id: ID!
+  nom: String!
+  adress: String!
+  contact: String!
+  produits: [Produit!]
+}
+
+type Query {
+  produits: [Produit!]!
+  produit(id: Float!): Produit!
+  fournisseurs: [Fournisseur!]!
+  fournisseur(id: Float!): Fournisseur!
+}
+
+type Mutation {
+  createProduit(input: CreateProduitInput!): Produit!
+  updateProduit(id: Float!, input: UpdateProduitInput!): Produit!
+  deleteProduit(id: Float!): Boolean!
+  createFournisseur(input: CreateFounisseurInput!): Fournisseur!
+  updateFournisseur(id: Float!, input: UpdateFournisseurInput!): Fournisseur!
+  deleteFournisseur(id: Float!): Boolean!
+}
+
+input CreateProduitInput {
+  nom: String!
+  categorie: String!
+  prix: Float!
+  fournisseurId: Float!
+}
+
+input UpdateProduitInput {
+  nom: String
+  categorie: String
+  prix: Float
+  fournisseurId: ID!
+}
+
+input CreateFounisseurInput {
+  nom: String!
+  adress: String!
+  contact: String!
+}
+
+input UpdateFournisseurInput {
+  nom: String
+  adress: String
+  contact: String
+}

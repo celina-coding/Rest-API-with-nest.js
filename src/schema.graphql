@@ -1,0 +1,59 @@
+type Produit{
+    id: ID!
+    nom: String!
+    categorie: String!
+    prix: Float!
+    fournisseur: Fournisseur!
+}
+
+type Fournisseur{
+    id: ID!
+    nom: String!
+    adress: String!
+    contact: String!
+    produits: [Produit!]!
+}
+
+input CreateFournisseurInput{
+    nom: String!
+    adress: String!
+    contact: String!
+}
+
+input CreateProduitInput{
+    nom: String!
+    categorie: String!
+    prix: Float!
+    fournisseurId: Int!
+}
+
+input UpdateProduitInput {
+  nom: String
+  categorie: String
+  prix: Float
+  fournisseurId: Int
+}
+
+input UpdateFournisseurInput {
+  nom: String
+  adress: String
+  contact: String
+}
+
+
+type Query {
+    fournisseurs: [Fournisseur!]!
+    fournisseur(id: Int!): Fournisseur
+    produits: [Produit!]!
+    produit(id: Int!): Produit
+}
+
+type Mutation {
+    createFournisseur(input: CreateFournisseurInput!): Fournisseur!
+    updateFournisseur(id: Int!, input: UpdateFournisseurInput!): Fournisseur
+    deleteFournisseur(id: Int!): Boolean
+
+    createProduit(input: CreateProduitInput!): Produit!
+    updateProduit(id: Int!, input: UpdateProduitInput!): Produit
+    deleteProduit(id: Int!): Boolean
+}

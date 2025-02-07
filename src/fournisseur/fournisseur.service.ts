@@ -33,6 +33,12 @@ export class FournisseurService{
         return fournisseur;
     }
 
+    async getAllFournisseurs(){
+        const fournisseurs = this.prisma.fournisseur.findMany();
+
+        return fournisseurs;
+    }
+
     deleteFournisseur(id: number){
         return this.prisma.fournisseur.delete({where: {id}});
     }

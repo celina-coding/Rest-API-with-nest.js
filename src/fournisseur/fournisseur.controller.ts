@@ -20,6 +20,11 @@ export class FournisseurController{
         return this.fournisseurService.updateFournisseur(numericId, dto);
     }
 
+    @Get('getAll')
+    getAllFournisseurs(){
+        return this.fournisseurService.getAllFournisseurs()
+    }
+
     @Get('get/:id')
     getFournisseur(@Param('id') id:string){
         const numericId = Number(id);
